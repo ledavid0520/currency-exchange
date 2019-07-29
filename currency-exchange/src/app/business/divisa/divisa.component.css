@@ -1,0 +1,105 @@
+.centered {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: left;
+    min-width: 270px;
+    max-width: 430px;
+}
+    
+div input {
+    border-radius: 5px;
+    z-index: 99999999999;
+}
+    
+input[type= button] {
+    background-color: DodgerBlue;
+    border: none;
+    color: white;
+    padding: 6px 16px;
+    text-align: center;
+    font-size: 17px;
+    cursor: pointer;
+    border-radius: 12px;
+    min-width: 200px;
+}
+    
+input.disabledInput {
+        background-color: lightgray;
+        color: dimgray;
+        border-color: dimgray
+}
+    
+.inline {
+        display: flex;
+}
+
+div.divisaInputs{
+    margin: 10px 5px 0 0;
+    position: relative;
+}
+
+div.divisaInputs > i {
+    position: absolute;
+    display: block;
+    transform: translate(0, -50%);
+    top: 62%;
+    pointer-events: none;
+    width: 25px;
+    text-align: center;
+    font-style: normal;
+}
+
+div.divisaInputs > input {
+    padding-left: 25px;
+    padding-right: 0;
+}
+  
+div.divisaInputs-right > i {
+    right: 0;
+}
+    
+div.divisaInputs-right > input {
+    padding-left: 0;
+    padding-right: 25px;
+    text-align: right;
+}
+    
+.full input{
+        min-width: 270px;
+        position: absolute;
+        top: 140%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+}
+
+@media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+    .inline {
+        display: block;
+    }
+    .full input,
+    div {
+        width: 100%;
+    }
+}  
+
+@media (min-width: 481px) and (max-width: 767px) {
+    .inline {
+        display: block;
+    }
+    .full input,
+    div {
+       width: 100%;
+    }  
+}
+  
+@media (min-width: 320px) and (max-width: 480px) {
+    .inline {
+        display: block;
+    }
+    .full input,
+    div {
+       width: 100%;
+    }
+}

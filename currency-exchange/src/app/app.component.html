@@ -1,0 +1,28 @@
+<div oncontextmenu="return false;" class="appBody">
+
+  <header>
+
+    <div class="logoHeader">
+      <a title="Tittle">
+        <img src="./assets/images/logo.png" />
+      </a>
+    </div>
+
+    <!-- <div *ngIf="isLogged()">
+      <app-logout></app-logout>
+    </div> -->
+
+  </header>
+
+  <div *ngIf="isLogged()">
+    <nav>
+      <app-menu></app-menu>
+    </nav>
+  </div>
+
+  <div class="screenArea">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<footer></footer>

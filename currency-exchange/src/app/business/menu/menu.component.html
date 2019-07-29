@@ -1,0 +1,3 @@
+<div class="navMenu">
+    <input *ngFor="let menu of menus; let i=index;" type="button" value="{{menu.name}}" (click)="openView(menu.link)">
+</div>

@@ -1,0 +1,25 @@
+<div class="centered">
+    <form [formGroup]="divisaForm" (ngSubmit)="saveTodo()">
+        <div class="inline">
+            <div class="divisaInputs">
+                <label for="valorDivisa">EU<a class="itemRequerido"><span>*</span></a></label>
+                <input id="valorDivisa" type="text" placeholder="EU" class="form-control" formControlName="valorDivisa"
+                    autocomplete="off" spellcheck="off"
+                    (keypress)="validarDecimales($event, divisaForm.value.valorDivisa)" />
+                <i>{{monedaDivisa}}</i>
+            </div>
+            <div class="divisaInputs">
+                <label for="cambioDivisa">USD</label>
+                <input id="cambioDivisa" type="text" placeholder="USD" class="form-control"
+                    formControlName="cambioDivisa" autocomplete="off" spellcheck="off"
+                    (keypress)="validarDecimales($event)" />
+                <i>{{monedaCambio}}</i>
+            </div>
+        </div>
+    </form>
+
+    <div class="full">
+        <input type="button" value="CALCULATE" (click)="calculate()" [disabled]="divisaForm.invalid"
+            [ngClass]="{'disabledInput' : divisaForm.invalid}">
+    </div>
+</div>

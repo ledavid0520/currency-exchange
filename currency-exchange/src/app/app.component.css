@@ -1,0 +1,170 @@
+.screenArea {
+	padding: 20px 0 0 0;
+	float: left;
+	width: 100%;
+	margin-top: 110px;
+	margin-bottom: 31px;
+	height: calc(100% - 161px);
+}
+
+.appBody {
+	height: 100%;
+}
+
+
+/* App Header */
+
+header {
+	width: 100%;
+	height: 60px;
+	position: fixed;
+	z-index: +9999999;
+	background: #07304b;
+	background: -moz-linear-gradient(top, #40acf4 0%, #07304b 37%);
+	background: -webkit-linear-gradient(top, #40acf4 0%, #07304b 37%);
+	background: linear-gradient(to bottom, #40acf4 0%, #07304b 37%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#40acf4', endColorstr='#07304b', GradientType=0);
+	-webkit-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+	-moz-box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+	box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.25);
+}
+
+.logoHeader {
+	float: left;
+	width: 100%;
+	max-width: 299px;
+	height: 100%;
+	box-shadow: 10px 0px 10px 0px rgba(0, 0, 0, 0.15);
+}
+
+.logoHeader a {
+	height: 100%;
+	display: block;
+	background: #07304b;
+	background: -moz-linear-gradient(top, #40acf4 0%, #07304b 37%);
+	background: -webkit-linear-gradient(top, #40acf4 0%, #07304b 37%);
+	background: linear-gradient(to bottom, #40acf4 0%, #07304b 37%);
+	position: relative;
+}
+
+.logoHeader a img {
+	position: absolute;
+	transform: translate(-50%, -50%);
+	top: 50%;
+	left: 50%;
+}
+
+
+/* Menu */
+
+nav {
+	height: 50px;
+	width: 100%;
+	position: fixed;
+	top: 60px;
+	z-index: +98;
+	-webkit-box-shadow: 0px 4px 8px 0px rgba(7, 91, 148, 0.3);
+	-moz-box-shadow: 0px 4px 8px 0px rgba(7, 91, 148, 0.3);
+	box-shadow: 0px 4px 8px 0px rgba(7, 91, 148, 0.3);
+}
+
+
+/* footer */
+
+.appBody+footer {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+	height: 30px;
+	background: #EAEAEA;
+	border-top: 1px solid #FFF;
+	z-index: 2;
+}
+
+.appBody+footer:before {
+	content: "No Copyright © 2019 - David. Angular Project";
+	position: absolute;
+	width: 100%;
+	text-align: center;
+	font-size: 13px;
+	color: #252525;
+	line-height: 32px;
+}
+
+
+/* responsive */
+
+@media (max-width:2024px) {
+	header {
+		height: 35px;
+	}
+	header .logoHeader a img {
+		height: 95%;
+		top: calc(50% - 1px);
+	}
+	nav {
+		height: 34px;
+		top: 35px;
+	}
+	.screenArea {
+		height: calc(100% - 96px);
+		margin-top: 70px;
+		margin-bottom: 21px;
+		padding: 5px 0 0 0;
+	}
+	.appBody+footer {
+		height: 20px;
+	}
+	.appBody+footer:before {
+		line-height: 20px;
+		font-size: 12px;
+	}
+}
+
+
+/**/
+
+@media (max-width:1366px) {
+	header {
+		height: 35px;
+	}
+	header .logoHeader a img {
+		height: 95%;
+		top: calc(50% - 1px);
+	}
+	nav {
+		height: 34px;
+		top: 35px;
+	}
+	.screenArea {
+		height: calc(100% - 96px);
+		margin-top: 70px;
+		margin-bottom: 21px;
+		padding: 5px 0 0 0;
+	}
+	.appBody+footer {
+		height: 20px;
+	}
+	.appBody+footer:before {
+		line-height: 20px;
+		font-size: 12px;
+	}
+}
+
+
+/**/
+
+@media (max-width:1024px) {
+	nav {
+		background: #00B1FF;
+	}
+}
+
+
+/**/
+
+@media (max-width:340px) {
+	header .logoHeader {
+		max-width: 280px;
+	}
+}

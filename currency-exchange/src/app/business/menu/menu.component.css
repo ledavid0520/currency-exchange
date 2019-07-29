@@ -1,0 +1,10 @@
+.navMenu {
+    padding: 10px;
+}
+
+div.navMenu input {
+    border-radius: 2px;
+    background-color: orange;
+    border: none;
+    color: white;
+}
