@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DivisaService } from 'src/app/services/divisa.service';
+import { Subscription, interval } from 'rxjs';
+
 
 @Component({
   selector: 'app-divisa',
@@ -21,6 +23,8 @@ export class DivisaComponent implements OnInit {
   monedaCambio = '$';
 
   valorDivisa = 0;
+
+  subscription = new Subscription();
 
   constructor(
     private formBuilder: FormBuilder,
@@ -67,6 +71,14 @@ export class DivisaComponent implements OnInit {
   }
 
   calculate() {
+    this.getCurrencies();
+    this.unsubscribe();
+    this.subscription = interval(600000).subscribe(timer => {
+      this.getCurrencies();
+    });
+  }
+
+  getCurrencies() {
     const fakeCurrency = {
       success: true,
       base: 'EUR',
@@ -78,7 +90,9 @@ export class DivisaComponent implements OnInit {
     this.calculateCurrency(fakeCurrency.rates);
     this.divisaService.getCurrencies().subscribe(
       response => {
-        this.calculateCurrency(response.rates);
+        if (response.success) {
+          this.calculateCurrency(fakeCurrency.rates);
+        }
       });
   }
 
@@ -87,6 +101,10 @@ export class DivisaComponent implements OnInit {
     const numberValue = parseFloat(value.replace(/,/g, ''));
     const exchange = rates.USD * numberValue;
     this.divisaForm.controls['cambioDivisa'].setValue(exchange);
+  }
+
+  unsubscribe() {
+    this.subscription.unsubscribe();
   }
 
 }
