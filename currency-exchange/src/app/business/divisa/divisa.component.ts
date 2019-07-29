@@ -108,7 +108,7 @@ export class DivisaComponent implements OnInit {
     const value = this.divisaForm.value.valorDivisa;
     const numberValue = parseFloat(value.replace(/,/g, ''));
     const exchange = rates.USD * numberValue;
-    this.divisaForm.controls['valorDivisa'].setValue(this.decimalPipe.transform(this.divisaForm.value.valorDivisa, '1.0-4'));
+    this.divisaForm.controls['valorDivisa'].setValue(this.decimalPipe.transform(numberValue, '1.0-4'));
     this.divisaForm.controls['cambioDivisa'].setValue(this.decimalPipe.transform(exchange, '1.2-4'));
   }
 
