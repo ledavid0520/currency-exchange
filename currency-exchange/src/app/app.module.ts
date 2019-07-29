@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { MenuComponent } from './business/menu/menu.component';
 import { DivisaComponent } from './business/divisa/divisa.component';
 import { DivisaService } from './services/divisa.service';
+import { DecimalPipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { DivisaService } from './services/divisa.service';
     HttpClientModule
   ],
   providers: [
-    DivisaService
+    DivisaService,
+    DecimalPipe
   ],
   bootstrap: [AppComponent]
 })

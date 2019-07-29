@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { DivisaService } from 'src/app/services/divisa.service';
 import { Subscription, interval } from 'rxjs';
+import { DecimalPipe } from '@angular/common';
 
 
 @Component({
@@ -28,7 +29,8 @@ export class DivisaComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private divisaService: DivisaService
+    private divisaService: DivisaService,
+    private decimalPipe: DecimalPipe
   ) { }
 
   ngOnInit() {
@@ -53,7 +55,7 @@ export class DivisaComponent implements OnInit {
   }
 
   private validarTeclaPresionada(e: any) {
-    return (e.charCode >= 48 && e.charCode <= 57) || e.charCode === 44 || e.charCode === 46;
+    return (e.charCode >= 48 && e.charCode <= 57) || e.charCode === 46;
   }
 
   private concatenarTeclaValor(valorActual: string, caracter: string, posicion: number) {
@@ -61,7 +63,9 @@ export class DivisaComponent implements OnInit {
   }
 
   campoNumericoSistemaDecimales(numero) {
-    let regexp = '^[\\d]{0,3}(separadorEnteros[\\d]{1,3})*(separadorDecimales[\\d]{0,cantidadDecimales})?$';
+    let regexp = '^[\\d]{0,20}(separadorDecimales[\\d]{0,cantidadDecimales})?$';
+    // Validando mientras escribe que ponga comas
+    // let regexp = '^[\\d]{0,3}(separadorEnteros[\\d]{1,3})*(separadorDecimales[\\d]{0,cantidadDecimales})?$';
     regexp = regexp.replace('separadorEnteros', '\\' + this.separadorEnteros);
     regexp = regexp.replace('separadorDecimales', '\\' + this.separadorDecimales);
     regexp = regexp.replace('cantidadDecimales', this.cantidadDecimales + '');
@@ -96,11 +100,16 @@ export class DivisaComponent implements OnInit {
       });
   }
 
+  formatOut() {
+    this.divisaForm.controls['valorDivisa'].setValue(this.divisaForm.value.valorDivisa.replace(/,/g, ''));
+  }
+
   calculateCurrency(rates) {
     const value = this.divisaForm.value.valorDivisa;
     const numberValue = parseFloat(value.replace(/,/g, ''));
     const exchange = rates.USD * numberValue;
-    this.divisaForm.controls['cambioDivisa'].setValue(exchange);
+    this.divisaForm.controls['valorDivisa'].setValue(this.decimalPipe.transform(this.divisaForm.value.valorDivisa, '1.0-4'));
+    this.divisaForm.controls['cambioDivisa'].setValue(this.decimalPipe.transform(exchange, '1.2-4'));
   }
 
   unsubscribe() {

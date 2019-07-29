@@ -4,7 +4,7 @@
             <div class="divisaInputs">
                 <label for="valorDivisa">EU<a class="itemRequerido"><span>*</span></a></label>
                 <input id="valorDivisa" type="text" placeholder="EU" class="form-control" formControlName="valorDivisa"
-                    autocomplete="off" spellcheck="off"
+                    autocomplete="off" spellcheck="off" (click)="formatOut()"
                     (keypress)="validarDecimales($event, divisaForm.value.valorDivisa)" />
                 <i>{{monedaDivisa}}</i>
             </div>
@@ -12,7 +12,7 @@
                 <label for="cambioDivisa">USD</label>
                 <input id="cambioDivisa" type="text" placeholder="USD" class="form-control"
                     formControlName="cambioDivisa" autocomplete="off" spellcheck="off"
-                    (keypress)="validarDecimales($event)" />
+                    (keypress)="validarDecimales($event)" disabled />
                 <i>{{monedaCambio}}</i>
             </div>
         </div>
